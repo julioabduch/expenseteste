@@ -38,22 +38,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => CategoriaWidget(),
+      errorBuilder: (context, state) => NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => CategoriaWidget(),
+          builder: (context, _) => NavBarPage(),
         ),
         FFRoute(
           name: 'categoria',
           path: '/categoria',
-          builder: (context, params) => CategoriaWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'categoria')
+              : CategoriaWidget(),
         ),
         FFRoute(
           name: 'budget',
           path: '/budget',
-          builder: (context, params) => BudgetWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'budget')
+              : BudgetWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
