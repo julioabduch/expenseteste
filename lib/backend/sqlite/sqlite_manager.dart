@@ -33,6 +33,10 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<GetBudgetRow>> getBudget() => performGetBudget(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS

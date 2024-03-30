@@ -206,6 +206,8 @@ dynamic deserializeParam<T>(
         switch (T) {
           case GetCategoriaRow:
             return GetCategoriaRow(data);
+          case GetBudgetRow:
+            return GetBudgetRow(data);
           default:
             return null;
         }

@@ -1,2 +1,3 @@
 // Export pages
-export '/pages/home_page/home_page_widget.dart' show HomePageWidget;
+export '/pages/categoria/categoria_widget.dart' show CategoriaWidget;
+export '/pages/budget/budget_widget.dart' show BudgetWidget;
