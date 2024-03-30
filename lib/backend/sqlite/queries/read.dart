@@ -12,14 +12,14 @@ Future<List<T>> _readQuery<T>(
 Future<List<GetCategoriaRow>> performGetCategoria(
   Database database,
 ) {
-  const query = '''
+  final query = '''
 SELECT * FROM categoria
 ''';
   return _readQuery(database, query, (d) => GetCategoriaRow(d));
 }
 
 class GetCategoriaRow extends SqliteRow {
-  GetCategoriaRow(super.data);
+  GetCategoriaRow(Map<String, dynamic> data) : super(data);
 
   String get name => data['name'] as String;
 }
