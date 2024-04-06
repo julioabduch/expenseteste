@@ -46,7 +46,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            'categoria',
+            'categoria1',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,
