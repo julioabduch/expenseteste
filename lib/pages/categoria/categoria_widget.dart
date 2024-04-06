@@ -93,7 +93,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            listViewGetCategoriaRow.name,
+                            'cat',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
