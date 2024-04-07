@@ -32,7 +32,7 @@ Future<List<GetBudgetRow>> performGetBudget(
   Database database,
 ) {
   final query = '''
-SELECT c.name AS name, b.amount
+SELECT b.id , c.name AS name, b.amount
 FROM budget b
 JOIN categoria c ON b.categoryid = c.id;
 ''';

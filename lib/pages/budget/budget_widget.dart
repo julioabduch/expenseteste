@@ -124,7 +124,18 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               await SQLiteManager.instance.deleteBudget(
-                                id: 0,
+                                id: listViewGetBudgetRow.id,
+                              );
+
+                              context.goNamed(
+                                'budget',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
                               );
                             },
                             child: Icon(

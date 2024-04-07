@@ -91,6 +91,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                           listViewGetCategoriaRowList[listViewIndex];
                       return Row(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
                             listViewGetCategoriaRow.name,
@@ -100,6 +101,33 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                                   fontFamily: 'Readex Pro',
                                   letterSpacing: 0.0,
                                 ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await SQLiteManager.instance.deleteCategoria(
+                                id: listViewGetCategoriaRow.id,
+                              );
+
+                              context.goNamed(
+                                'categoria',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            },
+                            child: Icon(
+                              Icons.restore_from_trash,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
                           ),
                         ],
                       );
