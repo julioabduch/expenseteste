@@ -91,7 +91,7 @@ class _CategoriaWidgetState extends State<CategoriaWidget> {
                           listViewGetCategoriaRowList[listViewIndex];
                       return Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             listViewGetCategoriaRow.name,

@@ -91,7 +91,7 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                           listViewGetBudgetRowList[listViewIndex];
                       return Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             valueOrDefault<String>(
