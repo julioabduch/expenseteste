@@ -37,9 +37,90 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<GetCategoriaCopyRow>> getCategoriaCopy() =>
+      performGetCategoriaCopy(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
+
+  Future addExpense({
+    String? name,
+    int? categoryid,
+    int? amount,
+  }) =>
+      performAddExpense(
+        _database,
+        name: name,
+        categoryid: categoryid,
+        amount: amount,
+      );
+
+  Future deleteExpense({
+    int? id,
+  }) =>
+      performDeleteExpense(
+        _database,
+        id: id,
+      );
+
+  Future addRecurring({
+    String? name,
+    int? categoryid,
+    int? amount,
+    String? frequency,
+  }) =>
+      performAddRecurring(
+        _database,
+        name: name,
+        categoryid: categoryid,
+        amount: amount,
+        frequency: frequency,
+      );
+
+  Future deleteRecurring({
+    int? id,
+  }) =>
+      performDeleteRecurring(
+        _database,
+        id: id,
+      );
+
+  Future addBudget({
+    int? categoryid,
+    int? amount,
+  }) =>
+      performAddBudget(
+        _database,
+        categoryid: categoryid,
+        amount: amount,
+      );
+
+  Future deleteBudget({
+    int? id,
+  }) =>
+      performDeleteBudget(
+        _database,
+        id: id,
+      );
+
+  Future deleteCategoria({
+    int? id,
+  }) =>
+      performDeleteCategoria(
+        _database,
+        id: id,
+      );
+
+  Future addCategoria({
+    String? name,
+  }) =>
+      performAddCategoria(
+        _database,
+        name: name,
+      );
 
   /// END UPDATE QUERY CALLS
 }

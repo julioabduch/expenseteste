@@ -208,6 +208,8 @@ dynamic deserializeParam<T>(
             return GetCategoriaRow(data);
           case GetBudgetRow:
             return GetBudgetRow(data);
+          case GetCategoriaCopyRow:
+            return GetCategoriaCopyRow(data);
           default:
             return null;
         }

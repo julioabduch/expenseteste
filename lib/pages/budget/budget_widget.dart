@@ -117,6 +117,22 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                                   letterSpacing: 0.0,
                                 ),
                           ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await SQLiteManager.instance.deleteBudget(
+                                id: 0,
+                              );
+                            },
+                            child: Icon(
+                              Icons.delete_forever,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
+                          ),
                         ],
                       );
                     },

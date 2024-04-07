@@ -22,6 +22,7 @@ class GetCategoriaRow extends SqliteRow {
   GetCategoriaRow(Map<String, dynamic> data) : super(data);
 
   String get name => data['name'] as String;
+  int get id => data['id'] as int;
 }
 
 /// END GET CATEGORIA
@@ -43,6 +44,26 @@ class GetBudgetRow extends SqliteRow {
 
   String get name => data['name'] as String;
   int get amount => data['amount'] as int;
+  int get id => data['id'] as int;
 }
 
 /// END GET BUDGET
+
+/// BEGIN GET CATEGORIACOPY
+Future<List<GetCategoriaCopyRow>> performGetCategoriaCopy(
+  Database database,
+) {
+  final query = '''
+SELECT * FROM categoria
+''';
+  return _readQuery(database, query, (d) => GetCategoriaCopyRow(d));
+}
+
+class GetCategoriaCopyRow extends SqliteRow {
+  GetCategoriaCopyRow(Map<String, dynamic> data) : super(data);
+
+  String get name => data['name'] as String;
+  int get id => data['id'] as int;
+}
+
+/// END GET CATEGORIACOPY
