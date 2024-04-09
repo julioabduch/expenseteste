@@ -129,13 +129,14 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                           listViewGetBudgetRowList[listViewIndex];
                       return Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             valueOrDefault<String>(
                               listViewGetBudgetRow.name,
                               'o',
                             ),
+                            textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -148,6 +149,7 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                               listViewGetBudgetRow.amount.toString(),
                               '0',
                             ),
+                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
