@@ -168,7 +168,6 @@ class _AddbudgetWidgetState extends State<AddbudgetWidget> {
                   amount: int.parse(_model.amountController.text),
                   categoryid: int.parse(_model.nameController.text),
                 );
-                Navigator.pop(context);
 
                 context.pushNamed(
                   'budget',
