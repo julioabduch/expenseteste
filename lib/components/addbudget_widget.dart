@@ -166,8 +166,9 @@ class _AddbudgetWidgetState extends State<AddbudgetWidget> {
               onPressed: () async {
                 await SQLiteManager.instance.addBudget(
                   amount: int.parse(_model.amountController.text),
-                  categoryid: int.parse(_model.nameController.text),
+                  categoryid: _model.dropDownValue!,
                 );
+                Navigator.pop(context);
 
                 context.pushNamed(
                   'budget',
