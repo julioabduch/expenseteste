@@ -1,7 +1,9 @@
 import '/backend/sqlite/sqlite_manager.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -198,6 +200,59 @@ class _AddbudgetWidgetState extends State<AddbudgetWidget> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
             ),
+          ),
+          FutureBuilder<List<GetCategoriaRow>>(
+            future: SQLiteManager.instance.getCategoria(),
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).primary,
+                      ),
+                    ),
+                  ),
+                );
+              }
+              final dropDownGetCategoriaRowList = snapshot.data!;
+              return FlutterFlowDropDown<int>(
+                controller: _model.dropDownValueController ??=
+                    FormFieldController<int>(
+                  _model.dropDownValue ??= 0,
+                ),
+                options: List<int>.from(
+                    dropDownGetCategoriaRowList.map((e) => e.id).toList()),
+                optionLabels:
+                    dropDownGetCategoriaRowList.map((e) => e.name).toList(),
+                onChanged: (val) => setState(() => _model.dropDownValue = val),
+                width: 300.0,
+                height: 56.0,
+                textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                    ),
+                hintText: 'Please select...',
+                icon: Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                  size: 24.0,
+                ),
+                fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                elevation: 2.0,
+                borderColor: FlutterFlowTheme.of(context).alternate,
+                borderWidth: 2.0,
+                borderRadius: 8.0,
+                margin: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                hidesUnderline: true,
+                isOverButton: true,
+                isSearchable: false,
+                isMultiSelect: false,
+              );
+            },
           ),
         ],
       ),
