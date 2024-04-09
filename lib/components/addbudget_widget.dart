@@ -50,7 +50,7 @@ class _AddbudgetWidgetState extends State<AddbudgetWidget> {
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: Column(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
             padding: EdgeInsets.all(10.0),
