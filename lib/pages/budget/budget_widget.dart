@@ -2,10 +2,7 @@ import '/backend/sqlite/sqlite_manager.dart';
 import '/components/addbudget_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'budget_model.dart';
 export 'budget_model.dart';
 
@@ -78,7 +75,7 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                             : FocusScope.of(context).unfocus(),
                         child: Padding(
                           padding: MediaQuery.viewInsetsOf(context),
-                          child: AddbudgetWidget(),
+                          child: const AddbudgetWidget(),
                         ),
                       );
                     },
@@ -92,7 +89,7 @@ class _BudgetWidgetState extends State<BudgetWidget> {
               ),
             ],
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -170,7 +167,7 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                               context.goNamed(
                                 'budget',
                                 extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
+                                  kTransitionInfoKey: const TransitionInfo(
                                     hasTransition: true,
                                     transitionType: PageTransitionType.fade,
                                     duration: Duration(milliseconds: 0),
