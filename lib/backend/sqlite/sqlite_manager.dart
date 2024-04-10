@@ -23,7 +23,7 @@ class SQLiteManager {
     }
     _database = await initializeDatabaseFromDbFile(
       'expenses',
-      'expenseteste1.db',
+      'expenseTeste.db',
     );
   }
 
