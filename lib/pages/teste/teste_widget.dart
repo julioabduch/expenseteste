@@ -1,30 +1,29 @@
 import '/backend/sqlite/sqlite_manager.dart';
-import '/components/addbudget_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'budget_model.dart';
-export 'budget_model.dart';
+import 'teste_model.dart';
+export 'teste_model.dart';
 
-class BudgetWidget extends StatefulWidget {
-  const BudgetWidget({super.key});
+class TesteWidget extends StatefulWidget {
+  const TesteWidget({super.key});
 
   @override
-  State<BudgetWidget> createState() => _BudgetWidgetState();
+  State<TesteWidget> createState() => _TesteWidgetState();
 }
 
-class _BudgetWidgetState extends State<BudgetWidget> {
-  late BudgetModel _model;
+class _TesteWidgetState extends State<TesteWidget> {
+  late TesteModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BudgetModel());
+    _model = createModel(context, () => TesteModel());
   }
 
   @override
@@ -46,51 +45,14 @@ class _BudgetWidgetState extends State<BudgetWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
-          title: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'budget',
-                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Outfit',
-                      color: Colors.white,
-                      fontSize: 22.0,
-                      letterSpacing: 0.0,
-                    ),
-              ),
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  await showModalBottomSheet(
-                    isScrollControlled: true,
-                    backgroundColor: FlutterFlowTheme.of(context).alternate,
-                    enableDrag: false,
-                    context: context,
-                    builder: (context) {
-                      return GestureDetector(
-                        onTap: () => _model.unfocusNode.canRequestFocus
-                            ? FocusScope.of(context)
-                                .requestFocus(_model.unfocusNode)
-                            : FocusScope.of(context).unfocus(),
-                        child: Padding(
-                          padding: MediaQuery.viewInsetsOf(context),
-                          child: AddbudgetWidget(),
-                        ),
-                      );
-                    },
-                  ).then((value) => safeSetState(() {}));
-                },
-                child: Icon(
-                  Icons.add,
-                  color: FlutterFlowTheme.of(context).tertiary,
-                  size: 24.0,
+          title: Text(
+            'teste',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
-              ),
-            ],
           ),
           actions: [],
           centerTitle: false,
@@ -101,8 +63,8 @@ class _BudgetWidgetState extends State<BudgetWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              FutureBuilder<List<GetBudgetRow>>(
-                future: SQLiteManager.instance.getBudget(),
+              FutureBuilder<List<GetTesteRow>>(
+                future: SQLiteManager.instance.getTeste(),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -118,38 +80,21 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                       ),
                     );
                   }
-                  final listViewGetBudgetRowList = snapshot.data!;
+                  final listViewGetTesteRowList = snapshot.data!;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: listViewGetBudgetRowList.length,
+                    itemCount: listViewGetTesteRowList.length,
                     itemBuilder: (context, listViewIndex) {
-                      final listViewGetBudgetRow =
-                          listViewGetBudgetRowList[listViewIndex];
+                      final listViewGetTesteRow =
+                          listViewGetTesteRowList[listViewIndex];
                       return Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            valueOrDefault<String>(
-                              listViewGetBudgetRow.name,
-                              'o',
-                            ),
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          Text(
-                            valueOrDefault<String>(
-                              listViewGetBudgetRow.amount.toString(),
-                              '0',
-                            ),
-                            textAlign: TextAlign.end,
+                            listViewGetTesteRow.nome,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -163,12 +108,12 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              await SQLiteManager.instance.deleteBudget(
-                                id: listViewGetBudgetRow.id,
+                              await SQLiteManager.instance.deleteTeste(
+                                id: listViewGetTesteRow.id,
                               );
 
                               context.goNamed(
-                                'budget',
+                                'teste',
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
@@ -179,7 +124,7 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                               );
                             },
                             child: Icon(
-                              Icons.delete_forever,
+                              Icons.restore_from_trash,
                               color: FlutterFlowTheme.of(context).secondaryText,
                               size: 24.0,
                             ),

@@ -42,6 +42,10 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<GetTesteRow>> getTeste() => performGetTeste(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
@@ -120,6 +124,22 @@ class SQLiteManager {
       performAddCategoria(
         _database,
         name: name,
+      );
+
+  Future deleteTeste({
+    int? id,
+  }) =>
+      performDeleteTeste(
+        _database,
+        id: id,
+      );
+
+  Future addTeste({
+    String? nome,
+  }) =>
+      performAddTeste(
+        _database,
+        nome: nome,
       );
 
   /// END UPDATE QUERY CALLS

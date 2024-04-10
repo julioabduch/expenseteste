@@ -167,8 +167,8 @@ dynamic deserializeParam<T>(
         return null;
       }
       return paramValues
-          .whereType<String>()
-          .map((p) => p)
+          .where((p) => p is String)
+          .map((p) => p as String)
           .map((p) => deserializeParam<T>(p, paramType, false))
           .where((p) => p != null)
           .map((p) => p! as T)
@@ -210,6 +210,8 @@ dynamic deserializeParam<T>(
             return GetBudgetRow(data);
           case GetCategoriaCopyRow:
             return GetCategoriaCopyRow(data);
+          case GetTesteRow:
+            return GetTesteRow(data);
           default:
             return null;
         }
