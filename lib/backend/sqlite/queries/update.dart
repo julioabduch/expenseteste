@@ -8,7 +8,7 @@ Future performAddExpense(
   int? amount,
 }) {
   final query = '''
-INSERT into expense (name , categoryid , amount) VALUES ('${name}' , ${categoryid} , ${amount} )
+INSERT into expense (name , categoryid , amount) VALUES ('$name' , $categoryid , $amount )
 ''';
   return database.rawQuery(query);
 }
@@ -37,7 +37,7 @@ Future performAddRecurring(
   String? frequency,
 }) {
   final query = '''
-INSERT into recurring (name , categoryid , amount , frequency) VALUES ('${name}' , ${categoryid} , ${amount} , '${frequency}')
+INSERT into recurring (name , categoryid , amount , frequency) VALUES ('$name' , $categoryid , $amount , '$frequency')
 ''';
   return database.rawQuery(query);
 }
@@ -64,7 +64,7 @@ Future performAddBudget(
   int? amount,
 }) {
   final query = '''
-INSERT into budget ( categoryid , amount) VALUES (${categoryid} , ${amount} )
+INSERT into budget ( categoryid , amount) VALUES ($categoryid , $amount )
 ''';
   return database.rawQuery(query);
 }
@@ -103,7 +103,7 @@ Future performAddCategoria(
   String? name,
 }) {
   final query = '''
-INSERT into categoria ( name) VALUES ('${name}' )
+INSERT into categoria ( name) VALUES ('$name' )
 ''';
   return database.rawQuery(query);
 }

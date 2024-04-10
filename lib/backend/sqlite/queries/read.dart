@@ -12,14 +12,14 @@ Future<List<T>> _readQuery<T>(
 Future<List<GetCategoriaRow>> performGetCategoria(
   Database database,
 ) {
-  final query = '''
+  const query = '''
 SELECT * FROM categoria
 ''';
   return _readQuery(database, query, (d) => GetCategoriaRow(d));
 }
 
 class GetCategoriaRow extends SqliteRow {
-  GetCategoriaRow(Map<String, dynamic> data) : super(data);
+  GetCategoriaRow(super.data);
 
   String get name => data['name'] as String;
   int get id => data['id'] as int;
@@ -31,7 +31,7 @@ class GetCategoriaRow extends SqliteRow {
 Future<List<GetBudgetRow>> performGetBudget(
   Database database,
 ) {
-  final query = '''
+  const query = '''
 SELECT b.id , c.name AS name, b.amount
 FROM budget b
 JOIN categoria c ON b.categoryid = c.id;
@@ -40,7 +40,7 @@ JOIN categoria c ON b.categoryid = c.id;
 }
 
 class GetBudgetRow extends SqliteRow {
-  GetBudgetRow(Map<String, dynamic> data) : super(data);
+  GetBudgetRow(super.data);
 
   String get name => data['name'] as String;
   int get amount => data['amount'] as int;
@@ -53,14 +53,14 @@ class GetBudgetRow extends SqliteRow {
 Future<List<GetCategoriaCopyRow>> performGetCategoriaCopy(
   Database database,
 ) {
-  final query = '''
+  const query = '''
 SELECT * FROM categoria
 ''';
   return _readQuery(database, query, (d) => GetCategoriaCopyRow(d));
 }
 
 class GetCategoriaCopyRow extends SqliteRow {
-  GetCategoriaCopyRow(Map<String, dynamic> data) : super(data);
+  GetCategoriaCopyRow(super.data);
 
   String get name => data['name'] as String;
   int get id => data['id'] as int;
