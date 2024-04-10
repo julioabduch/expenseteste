@@ -149,7 +149,7 @@ class _BudgetWidgetState extends State<BudgetWidget> {
                               listViewGetBudgetRow.amount.toString(),
                               '0',
                             ),
-                            textAlign: TextAlign.center,
+                            textAlign: TextAlign.end,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
